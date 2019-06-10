@@ -8,11 +8,18 @@ from sklearn.metrics import accuracy_score, f1_score
 from keras.models import Sequential
 from keras.layers import Dense, Activation
 
+import tensorflow as tf
+
 import matplotlib.pyplot as plt
+
+import logging
+logging.getLogger().setLevel(logging.INFO)
+
 
 working_dir = os.getcwd()
 
 data_dir = '../Data/'
+data_dir = 'Data/'
 
 conn = sqlite3.connect(data_dir + 'db.sqlite3')
 
@@ -164,6 +171,44 @@ plt.legend()
 plt.show()
 
 # tensorflow neural net (with estimator API)
+
+# make feature dict
+features = feature_cat_names + feature_cont_names
+feature_dict = dict(zip(features, X.T))
+
+# 1 numpy innput
+
+# 2 regular input
+def input_fn_2(feature_dict, labels, batch_size):
+
+    dataset = tf.data.Dataset.from_tensor_slices((dict(feature_dict), labels))
+
+    return dataset.shuffle(100).repeat().batch(batch_size) # returns (features, labels)
+
+
+# define feature columns for input
+tf_feature_columns = []
+for key in feature_dict.keys():
+    tf_feature_columns.append(tf.feature_column.numeric_column(key=key))
+
+# instantiate estimator
+tensorflow_dnn_model = tf.estimator.DNNClassifier(
+    feature_columns = tf_feature_columns,
+    hidden_units = [5,5],
+    n_classes = 2)
+
+# train model
+tf.logging.set_verbosity(tf.logging.INFO)
+tensorflow_dnn_model.train(
+    input_fn = lambda: input_fn_2(feature_dict, Y, batch_size=100),
+    steps = np.floor(N/10))
+
+tf.logging.set_verbosity(tf.logging.INFO)
+results = tensorflow_dnn_model.evaluate(
+    input_fn = lambda: input_fn_2(feature_dict, Y, batch_size=N),
+    steps=1)
+
+print(f'Accuracy of the ole tensorflow api {results}')
 
 # tensorflow neural net (lower level)
 
