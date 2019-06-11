@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e66d4709-5667-4ffd-b71b-f18ee4a18ef4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/ufc_nlp_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/ufc_nlp_analysis.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Code/ufc_nlp_analysis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="521">
-              <caret line="211" lean-forward="true" selection-start-line="211" selection-end-line="211" />
+            <state relative-caret-position="605">
+              <caret line="202" column="27" lean-forward="true" selection-start-line="202" selection-start-column="27" selection-end-line="202" selection-end-column="27" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -48,16 +49,17 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-227" />
-    <option name="y" value="-1057" />
-    <option name="width" value="1920" />
-    <option name="height" value="1057" />
+    <option name="x" value="1440" />
+    <option name="y" value="-517" />
+    <option name="width" value="2560" />
+    <option name="height" value="1417" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -85,7 +87,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -174,12 +175,13 @@
       <updated>1560158189754</updated>
       <workItem from="1560158191087" duration="448000" />
       <workItem from="1560158802616" duration="593000" />
-      <workItem from="1560159946207" duration="21898000" />
+      <workItem from="1560159946207" duration="22775000" />
+      <workItem from="1560242489454" duration="2454000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22939000" />
+    <option name="totallyTimeSpent" value="26270000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -191,10 +193,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-227" y="-1057" width="1920" height="1057" extended-state="6" />
+    <frame x="1440" y="-517" width="2560" height="1417" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16719915" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.09412232" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -209,13 +211,13 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32953367" />
-      <window_info anchor="bottom" id="Python Console" order="12" visible="true" weight="0.25595856" />
-      <window_info anchor="right" x="0" y="0" width="430" height="857" id="Documentation" sideWeight="0.5013928" side_tool="true" visible="true" weight="0.32960597" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="12" visible="true" weight="0.1509434" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" sideWeight="0.49860725" visible="true" weight="0.32960597" />
+      <window_info anchor="right" id="SciView" order="3" sideWeight="0.4977778" visible="true" weight="0.18268467" />
       <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" x="0" y="0" width="430" height="857" id="Documentation" order="5" sideWeight="0.50222224" side_tool="true" visible="true" weight="0.18268467" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,8 +239,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Code/ufc_nlp_analysis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="211" lean-forward="true" selection-start-line="211" selection-end-line="211" />
+        <state relative-caret-position="605">
+          <caret line="202" column="27" lean-forward="true" selection-start-line="202" selection-start-column="27" selection-end-line="202" selection-end-column="27" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>

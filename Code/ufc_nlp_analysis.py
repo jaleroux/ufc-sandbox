@@ -15,7 +15,6 @@ import matplotlib.pyplot as plt
 import logging
 logging.getLogger().setLevel(logging.INFO)
 
-
 working_dir = os.getcwd()
 
 data_dir = '../Data/'
@@ -176,7 +175,8 @@ plt.show()
 features = feature_cat_names + feature_cont_names
 feature_dict = dict(zip(features, X.T))
 
-# 1 numpy innput
+# 1 numpy input
+train_input_1 = tf.estimator.inputs.numpy_input_fn(feature_dict, Y, batch_size = 100, num_epochs = 1, shuffle = True)
 
 # 2 regular input
 def input_fn_2(feature_dict, labels, batch_size):
@@ -198,18 +198,35 @@ tensorflow_dnn_model = tf.estimator.DNNClassifier(
     n_classes = 2)
 
 # train model
+# 1) using the numpy input parameter
+tf.logging.set_verbosity(tf.logging.INFO)
+tensorflow_dnn_model.train(
+    input_fn = train_input_1
+)
+
+# 2)
 tf.logging.set_verbosity(tf.logging.INFO)
 tensorflow_dnn_model.train(
     input_fn = lambda: input_fn_2(feature_dict, Y, batch_size=100),
-    steps = np.floor(N/10))
+    steps = np.floor(N/100))
 
+# evaluate model
+# 1
 tf.logging.set_verbosity(tf.logging.INFO)
 results = tensorflow_dnn_model.evaluate(
-    input_fn = lambda: input_fn_2(feature_dict, Y, batch_size=N),
-    steps=1)
+    input_fn = train_input_1)
+
+# 2
+tf.logging.set_verbosity(tf.logging.INFO)
+results = tensorflow_dnn_model.evaluate(
+    input_fn = lambda: input_fn_2(feature_dict, Y, batch_size=N))
 
 print(f'Accuracy of the ole tensorflow api {results}')
 
 # tensorflow neural net (lower level)
+
+# run on the GCP
+
+# try cross validation
 
 ########################################
