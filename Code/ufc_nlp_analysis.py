@@ -128,12 +128,12 @@ def y2indicator(y):
 Y = y2indicator(Y)
 
 # multinomial logistic regression
-# logreg = LogisticRegression(C=1e5, solver='lbfgs', multi_class='multinomial')
-# logreg = LogisticRegression(C=1e3, solver='lbfgs')
-# logreg.fit(X, Y)
-# pred = logreg.predict(X)
-#
-# print("accuracy: ", accuracy_score(Y, pred))
+logreg = LogisticRegression(C=1e5, solver='lbfgs', multi_class='multinomial')
+logreg = LogisticRegression(C=1e3, solver='lbfgs')
+logreg.fit(X, Y)
+pred = logreg.predict(X)
+
+print("accuracy: ", accuracy_score(Y, pred))
 
 # keras neural net
 N, D = X.shape
@@ -214,19 +214,123 @@ tensorflow_dnn_model.train(
 # 1
 tf.logging.set_verbosity(tf.logging.INFO)
 results = tensorflow_dnn_model.evaluate(
-    input_fn = train_input_1)
+    input_fn = train_input_1,
+    steps=1
+)
 
 # 2
 tf.logging.set_verbosity(tf.logging.INFO)
 results = tensorflow_dnn_model.evaluate(
-    input_fn = lambda: input_fn_2(feature_dict, Y, batch_size=N))
+    input_fn = lambda: input_fn_2(feature_dict, Y, batch_size=N),
+    steps=1
+)
 
 print(f'Accuracy of the ole tensorflow api {results}')
 
 # tensorflow neural net (lower level)
 
+# helper functions
+def predict(p_y):
+    return np.argmax(p_y, axis=1)
+def error_rate(p_y, t):
+    prediction = predict(p_y)
+    return np.mean(prediction != t)
+
+# define / rename variables
+X_train = X
+Y_train = Y
+
+learning_rate = 0.00004
+max_iter = 10
+batchsize = 100
+#n_batches= np.floor(N/batchsize)
+n_batches = N // batchsize
+
+M1 = 5
+M2 = 5
+
+W1_init = np.random.rand(D, M1) / np.sqrt(D)
+b1_init = np.zeros(M1)
+W2_init = np.random.rand(M1, M2) / np.sqrt(M1)
+b2_init = np.zeros(M2)
+W3_init = np.random.rand(M2, K) / np.sqrt(M2)
+b3_init = np.zeros(K)
+
+X = tf.placeholder(tf.float32, shape=(None, D), name ='X')
+T = tf.placeholder(tf.float32, shape=(None, K), name ='T')
+W1 = tf.Variable(W1_init.astype(np.float32))
+b1 = tf.Variable(b1_init.astype(np.float32))
+W2 = tf.Variable(W2_init.astype(np.float32))
+b2 = tf.Variable(b2_init.astype(np.float32))
+W3 = tf.Variable(W3_init.astype(np.float32))
+b3 = tf.Variable(b3_init.astype(np.float32))
+
+# assert shapes of tensors
+assert X.get_shape().as_list() == [None, D]
+assert T.get_shape().as_list() == [None, K]
+assert W1.get_shape().as_list() == [D, M1]
+assert b1.get_shape().as_list() == [K]
+assert W2.get_shape().as_list() == [M1, M2]
+assert b2.get_shape().as_list() == [M2]
+assert W3.get_shape().as_list() == [M2, K]
+assert b3.get_shape().as_list() == [K]
+
+# model (feed forward algo)
+Z1 = tf.nn.relu( tf.matmul(X, W1) + b1 )
+Z2 = tf.nn.relu( tf.matmul(Z1, W2) + b2 )
+Yish = tf.matmul(Z2, W3) + b3
+
+# cost
+cost = tf.reduce_sum(tf.nn.softmax_cross_entropy_with_logits_v2(logits=Yish, labels=T))
+
+# train
+train_op = tf.train.RMSPropOptimizer(learning_rate=learning_rate, decay=0.99, momentum=0.9).minimize(cost)
+
+# predict
+predict_op = tf.argmax(Yish, 1)
+
+# train loop
+costs = []
+init = tf.global_variables_initializer()
+
+# alternative way of starting
+# sess = tf.Session()
+# sess.run(init)
+
+
+with tf.Session() as session:
+    session.run(init)
+
+    # train loop
+    for i in range(max_iter):
+        for j in range(n_batches):
+            Xbatch = X_train[j*batchsize:(j*batchsize+batchsize),]
+            Ybatch = Y_train[j*batchsize:(j*batchsize+batchsize),]
+
+            session.run(train_op, feed_dict={X: Xbatch, T: Ybatch})
+
+            if j % 5 == 0:
+                train_cost = session.run(cost, feed_dict={X: Xbatch, T: Ybatch})
+                prediction = session.run(predict_op, feed_dict={X: Xbatch, T: Ybatch})
+                error = error_rate(Ybatch, prediction)
+
+                # Evaluate the accuracy of the model
+                correct_prediction = tf.equal(prediction, tf.argmax(Ybatch, 1))
+                accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32), name="accuracy")
+
+                print(f"Cost / err at iteration {i}, {j}: {train_cost} / {error} / {accuracy}")
+                costs.append(train_cost)
+
+# sess.close()s
+
+plt.plot(costs)
+plt.show()
+
 # run on the GCP
 
+
 # try cross validation
+# asserting shapes
+
 
 ########################################
