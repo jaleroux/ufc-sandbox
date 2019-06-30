@@ -114,7 +114,11 @@ Y_df = data_df[target_name]
 X = X_df.values
 Y = Y_df.values
 
+# keep 3 classes
+Y = np.array([2 if y == 1 else ( 1 if y == 0 else 0) for y in Y])
+# make 2 classes
 Y = np.array([1 if y == 1 else 0 for y in Y])
+
 
 def y2indicator(y):
     N = len(y)
@@ -170,7 +174,7 @@ plt.legend()
 plt.show()
 
 # tensorflow neural net (with estimator API)
-
+K = len(set(Y.flat))
 # make feature dict
 features = feature_cat_names + feature_cont_names
 feature_dict = dict(zip(features, X.T))
@@ -195,7 +199,7 @@ for key in feature_dict.keys():
 tensorflow_dnn_model = tf.estimator.DNNClassifier(
     feature_columns = tf_feature_columns,
     hidden_units = [5,5],
-    n_classes = 2)
+    n_classes = K)
 
 # train model
 # 1) using the numpy input parameter
@@ -237,6 +241,9 @@ def error_rate(p_y, t):
     return np.mean(prediction != t)
 
 # define / rename variables
+N, D = X.shape
+K = Y.shape[1]
+
 X_train = X
 Y_train = Y
 
@@ -269,7 +276,7 @@ b3 = tf.Variable(b3_init.astype(np.float32))
 assert X.get_shape().as_list() == [None, D]
 assert T.get_shape().as_list() == [None, K]
 assert W1.get_shape().as_list() == [D, M1]
-assert b1.get_shape().as_list() == [K]
+assert b1.get_shape().as_list() == [M1]
 assert W2.get_shape().as_list() == [M1, M2]
 assert b2.get_shape().as_list() == [M2]
 assert W3.get_shape().as_list() == [M2, K]
@@ -297,7 +304,6 @@ init = tf.global_variables_initializer()
 # sess = tf.Session()
 # sess.run(init)
 
-
 with tf.Session() as session:
     session.run(init)
 
@@ -318,19 +324,15 @@ with tf.Session() as session:
                 correct_prediction = tf.equal(prediction, tf.argmax(Ybatch, 1))
                 accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32), name="accuracy")
 
-                print(f"Cost / err at iteration {i}, {j}: {train_cost} / {error} / {accuracy}")
+                print(f"Cost / err at iteration {i}, {j}: {train_cost} / {error} / {accuracy.eval()}")
                 costs.append(train_cost)
 
-# sess.close()s
-
+# sess.close()
 plt.plot(costs)
 plt.show()
 
 # run on the GCP
 
-
 # try cross validation
 # asserting shapes
-
-
 ########################################

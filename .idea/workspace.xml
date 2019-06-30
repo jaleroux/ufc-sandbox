@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e66d4709-5667-4ffd-b71b-f18ee4a18ef4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Code/ufc-dnn-lean.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/ufc-sandbox.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ufc-sandbox.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Code/ufc_nlp_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code/ufc_nlp_analysis.py" afterDir="false" />
@@ -15,11 +17,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Code/ufc_nlp_analysis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="426">
-              <caret line="323" column="15" selection-start-line="323" selection-start-column="15" selection-end-line="323" selection-end-column="15" />
+            <state relative-caret-position="472">
+              <caret line="231" selection-start-line="231" selection-end-line="231" selection-end-column="54" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Code/ufc-dnn-lean.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="31" column="50" lean-forward="true" selection-start-line="31" selection-start-column="50" selection-end-line="31" selection-end-column="50" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -28,6 +42,13 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -46,22 +67,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Code/ufc_nlp_analysis.py" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/ufc-sandbox.iml" />
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
-        <option value="$PROJECT_DIR$/.idea/modules.xml" />
-        <option value="$PROJECT_DIR$/.idea/other.xml" />
+        <option value="$PROJECT_DIR$/Code/ufc-dnn-lean.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-255" />
+    <option name="x" value="-143" />
     <option name="y" value="-1057" />
     <option name="width" value="1920" />
     <option name="height" value="1057" />
@@ -87,12 +98,6 @@
             <path>
               <item name="ufc-sandbox" type="b2602c69:ProjectViewProjectNode" />
               <item name="ufc-sandbox" type="462c0819:PsiDirectoryNode" />
-              <item name="Code" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ufc-sandbox" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ufc-sandbox" type="462c0819:PsiDirectoryNode" />
               <item name="Data" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -107,7 +112,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -194,11 +199,13 @@
       <workItem from="1560534104707" duration="727000" />
       <workItem from="1560590409642" duration="7254000" />
       <workItem from="1560797758682" duration="1848000" />
+      <workItem from="1561380211105" duration="375000" />
+      <workItem from="1561885987559" duration="4915000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37269000" />
+    <option name="totallyTimeSpent" value="42559000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -210,10 +217,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-255" y="-1057" width="1920" height="1057" extended-state="0" />
+    <frame x="-143" y="-1057" width="1920" height="1057" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13844515" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14057508" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -250,8 +257,18 @@
     <entry file="file://$PROJECT_DIR$/../../Virtual Environments/Deep Learning/deep-env/lib/python3.7/site-packages/keras/engine/training_utils.py" />
     <entry file="file://$PROJECT_DIR$/Code/ufc_nlp_analysis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="323" column="15" selection-start-line="323" selection-start-column="15" selection-end-line="323" selection-end-column="15" />
+        <state relative-caret-position="472">
+          <caret line="231" selection-start-line="231" selection-end-line="231" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Code/ufc-dnn-lean.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="50" lean-forward="true" selection-start-line="31" selection-start-column="50" selection-end-line="31" selection-end-column="50" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>

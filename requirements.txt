@@ -5,3 +5,4 @@ nltk
 tensorflow
 keras
 matplotlib
+ipython
